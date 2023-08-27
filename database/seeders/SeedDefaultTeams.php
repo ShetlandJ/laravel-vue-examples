@@ -26,7 +26,7 @@ class SeedDefaultTeams extends Seeder
         $this->seedTeamIfNotExist([
             'name' => 'Liverpool',
             'founded' => '1892',
-            'stadium' => 'Anfield',
+            'stadium' => 'Arfield Arena',
             'location' => 'Liverpool'
         ]);
 
