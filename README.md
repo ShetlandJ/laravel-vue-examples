@@ -1,84 +1,21 @@
-<br>
-<a href="https://vueform.com?ref=github" target="_blank">
+### Project installation instructions
 
-![Vueform](./public/img/logo.svg)
+Hello! To get this up and running, we assume the following to be true:
 
-</a>
+1. You have the repo cloned onto your machine
+2. You have PHP (8.x) installed
+3. You have Composer installed
+4. You have NPM and Node installed
+5. You have a way to create and manage DBs on your machine
 
-# Vueform Laravel + Vue 2 + Tailwind CSS 3 Boilerplate
+## First things you need to do:
 
-*Last tested with Laravel 8.75.*
-
-## Installation (free)
-
-1. Clone this repo with:<br>`git clone https://github.com/vueform/laravel-vue2-starter vueform-laravel-vue2-starter`
-2. Log in to your account at <a href="https://vueform.com/sign-in" target="_blank">vueform.com/sign-in</a>
-3. Go to **Projects** > **+ New project**
-4. Create a new project and copy your **API Key** to `vueform.config.js`
-5. Go to project folder `cd vueform-laravel-vue2-starter`
-6. Run `composer install` to install Laravel
-
-### npm
-
-7. Run `npm install` to install dependencies
-8. Run `npm run dev` to compile assets
-9. Run `php artisan serve` to start the server
-
-### yarn
-
-7. Run `yarn install` to install dependencies
-8. Run `yarn run dev` to compile assets
-9. Run `php artisan serve` to start the server
-
-## Installation (with license)
-
-1. Clone this repo with:<br>`git clone https://github.com/vueform/laravel-vue2-starter vueform-laravel-vue2-starter`
-2. Log in to your account at <a href="https://vueform.com/sign-in" target="_blank">vueform.com/sign-in</a>
-3. Go to **Projects** > **+ New project**
-4. Add `localhost` and live domains to **Project domains** and create the project
-5. Download the latest `vueform-x.x.x-hash.zip` file and unzip it
-6. Move the **contents** of the unzipped folder to this projects's `./packages/vueform` folder (`./packages/vueform/index.js` must exist)
-7. Change `"@vueform/vueform": "^1.2.6"` to `"@vueform/vueform": "file:./packages/vueform"` in `package.json`
-8. Go to project folder `cd vueform-laravel-vue2-starter`
-9. Run `composer install` to install Laravel
-
-### npm
-
-10. Run `npm install` to install dependencies
-11. Run `npm run dev` to compile assets
-12. Run `php artisan serve` to start the server
-
-### yarn
-
-10. Run `yarn install` to install dependencies
-11. Run `yarn run dev` to compile assets
-12. Run `php artisan serve` to start the server
-
-## Demo
-
-Go to `http://localhost:8000` and you should see the following screen:
-
-![Vueform demo](./public/img/demo.png)
-
----
-
-## About Vueform
-
-<a href="https://vueform.com?ref=ghb">
-  <img align="center" src="https://github.com/vueform/multiselect/raw/main/assets/vueform-banner.png" alt="Vueform" title="Vueform">
-</a>
-
-<br>
-<br>
-
-Vueform is the industry leading form builder for Vue.js that makes form development a breeze. It standardizes and handles the entire form building process, including:
-- a complete theming and templating system with **Tailwind support**
-- 25+ form elements with **multi-file uploads**, date pickers and rich text editor
-- element **nesting** and **repeating**
-- **50+ validators** with async, dependent and custom rules
-- **conditional logic** on element & form level
-- breaking forms into **steps** with **form wizard**
-- **dynamic** form rendering with **JSON** support
-- **translating** form content and global i18n support.
-
-Learn more: [https://vueform.com](https://vueform.com)
+0. Not worry about the size of the project - there's hundreds of files, we'll work with less than 10.
+1. Make a copy of the .env.example file, and update the DB_DATABASE, DB_USERNAME and DB_PASSWORD with your chosen DB and the credentials you use to access your MySQL - for me on my local machine this just username `root` and no password. Yours may vary. You'll need to create a DB with any name, make sure it matches the DB_DATABASE value in your .env file.
+2. Run `composer install`
+3. Run `npm install` or `npm i` (same thing)
+4. Run `php artisan key:generate` (we'll cover `artisan` in a bit)
+5. Run `php artisan migrate`
+6. Run `php artisan serve`
+7. In a new terminal tab, run `npm run hot`
+8. Visit http://localhost:8000
