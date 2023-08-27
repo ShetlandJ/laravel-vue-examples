@@ -7,15 +7,16 @@ Hello! To get this up and running, we assume the following to be true:
 3. You have Composer installed
 4. You have NPM and Node installed
 5. You have a way to create and manage DBs on your machine
+6. You have the Google Chrome extension `Vue DevTools` installed (or FireFox has it too) - this is a really useful thing!
 
 ## First things you need to do:
 
 0. Not worry about the size of the project - there's hundreds of files, we'll work with less than 10.
 1. Make a copy of the .env.example file, and update the DB_DATABASE, DB_USERNAME and DB_PASSWORD with your chosen DB and the credentials you use to access your MySQL - for me on my local machine this just username `root` and no password. Yours may vary. You'll need to create a DB with any name, make sure it matches the DB_DATABASE value in your .env file.
-2. Run `composer install`
+2. Run `composer install` (installed PHP dependencies, like `npm` does for Javascript)
 3. Run `npm install` or `npm i` (same thing)
 4. Run `php artisan key:generate` (we'll cover `artisan` in a bit)
-5. Run `php artisan migrate`
-6. Run `php artisan serve`
-7. In a new terminal tab, run `npm run hot`
+5. Run `php artisan migrate` (runs migrations that come with Laravel + ones I've made)
+6. Run `php artisan serve` (runs the php server)
+7. In a new terminal tab, run `npm run hot` (runs the front-end JS)
 8. Visit http://localhost:8000
