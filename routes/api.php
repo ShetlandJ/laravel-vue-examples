@@ -25,5 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::namespace('App\Http\Controllers\Api\FootballTeams')->prefix('/teams')->group(function () {
     Route::get('/', 'IndexController')->name('api.football-team.index');
+    Route::post('/', 'CreateController')->name('api.football-team.create');
     Route::delete('/{team:id}', 'DeleteController')->name('api.football-team.destroy');
 });
