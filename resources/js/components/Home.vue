@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <b-container class="mt-4">
-            <new-team-form class="mb-4" />
+            <new-team-form class="mb-4 w-50" />
 
             <b-table
                 striped
@@ -22,6 +22,8 @@
                     </b-button>
                 </template>
             </b-table>
+
+            <b-button @click="refresh"> Reseed/Refresh teams </b-button>
         </b-container>
     </div>
 </template>
@@ -81,6 +83,10 @@ export default {
             const { data } = await axios.delete(`/api/teams/${team.id}`);
             await this.loadData();
         },
+        async refresh() {
+            await axios.get('/api/teams/refresh');
+            await this.loadData();
+        }
     },
 };
 </script>
