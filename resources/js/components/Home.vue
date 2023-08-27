@@ -1,0 +1,86 @@
+<template>
+    <div id="app">
+        <b-container class="mt-4">
+            <new-team-form class="mb-4" />
+
+            <b-table
+                striped
+                hover
+                :items="teams"
+                :fields="fields"
+                caption-top
+                responsive
+                :busy.sync="loading"
+            >
+                <template #cell(actions)="data">
+                    <b-button
+                        size="sm"
+                        @click="deleteTeam(data.item)"
+                        variant="danger"
+                    >
+                        Delete
+                    </b-button>
+                </template>
+            </b-table>
+        </b-container>
+    </div>
+</template>
+
+<script>
+import axios from "axios";
+import NewTeamForm from "./NewTeamForm.vue";
+
+export default {
+    components: { NewTeamForm },
+    data() {
+        return {
+            form: {
+                name: "",
+                founded: "",
+                stadium: "",
+                location: "",
+            },
+            fields: [
+                {
+                    key: "name",
+                    label: "Name",
+                    sortable: true,
+                },
+                {
+                    key: "founded",
+                    label: "Founded",
+                },
+                {
+                    key: "stadium",
+                    label: "Stadium",
+                },
+                {
+                    key: "location",
+                    label: "Location",
+                },
+                {
+                    key: "actions",
+                    label: "",
+                },
+            ],
+            teams: [],
+            loading: false,
+        };
+    },
+    async created() {
+        this.loading = true;
+        await this.loadData();
+        this.loading = false;
+    },
+    methods: {
+        async loadData() {
+            const { data } = await axios.get("/api/teams");
+            this.teams = data;
+        },
+        async deleteTeam(team) {
+            const { data } = await axios.delete(`/api/teams/${team.id}`);
+            await this.loadData();
+        },
+    },
+};
+</script>
