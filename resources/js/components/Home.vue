@@ -36,12 +36,6 @@ export default {
     components: { NewTeamForm },
     data() {
         return {
-            form: {
-                name: "",
-                founded: "",
-                stadium: "",
-                location: "",
-            },
             fields: [
                 {
                     key: "name",
@@ -80,7 +74,7 @@ export default {
             this.teams = data;
         },
         async deleteTeam(team) {
-            const { data } = await axios.delete(`/api/teams/${team.id}`);
+            await axios.delete(`/api/teams/${team.id}`);
             await this.loadData();
         },
         async refresh() {
