@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Api\FootballTeams;
 
 use App\Models\FootballTeam;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Http\Controllers\Controller;
+
 
 class CreateController extends Controller
 {

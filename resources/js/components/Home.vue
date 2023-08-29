@@ -3,21 +3,9 @@
         <b-container class="mt-4">
             <new-team-form class="mb-4 w-50" />
 
-            <b-table
-                striped
-                hover
-                :items="teams"
-                :fields="fields"
-                caption-top
-                responsive
-                :busy.sync="loading"
-            >
+            <b-table striped hover :items="teams" :fields="fields" caption-top responsive :busy.sync="loading">
                 <template #cell(actions)="data">
-                    <b-button
-                        size="sm"
-                        @click="deleteTeam(data.item)"
-                        variant="danger"
-                    >
+                    <b-button size="sm" @click="deleteTeam(data.item)" variant="danger">
                         Delete
                     </b-button>
                 </template>
@@ -31,6 +19,7 @@
 <script>
 import axios from "axios";
 import NewTeamForm from "./NewTeamForm.vue";
+import eventBus from "./eventBus.js"
 
 export default {
     components: { NewTeamForm },
@@ -82,5 +71,13 @@ export default {
             await this.loadData();
         }
     },
+    mounted() {
+        eventBus.$on('team-created', () => {
+            this.loadData();
+        })
+    },
+    beforeDestroy() {
+        eventBus.$off('team-created')
+    }
 };
 </script>
