@@ -16,6 +16,8 @@ class UpdateController extends Controller
             'founded' => 'required|string|max:255',
             'stadium' => 'required|string|max:255',
             'location' => 'required|string|max:255',
+            'colour' => 'required|string|max:7|regex:/^#[a-fA-F0-9]{6}$/', 
+            'secondary_colour' => 'required|string|max:7|regex:/^#[a-fA-F0-9]{6}$/',
 
         ]);
 

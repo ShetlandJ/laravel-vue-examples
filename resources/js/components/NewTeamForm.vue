@@ -16,6 +16,15 @@
             <b-form-input id="location" v-model="form.location" type="text" required placeholder="Enter location" />
         </b-form-group>
 
+        <b-form-group label="Colour" label-for="colour" label-cols="3">
+            <b-form-input id="colour" v-model="form.colour" type="color" required placeholder="Choose colour" />
+        </b-form-group>
+
+        <b-form-group label="Secondary Colour" label-for="secondary_colour" label-cols="3">
+            <b-form-input id="secondary_colour" v-model="form['secondary_colour']" type="color" required
+                placeholder="Choose secondary colour" />
+        </b-form-group>
+
         <b-button type="submit" variant="primary">Create</b-button>
     </b-form>
 </template>
@@ -33,6 +42,8 @@ export default {
                 founded: "",
                 stadium: "",
                 location: "",
+                colour: "#000000",
+                'secondary_colour': "#ffffff"
             },
         };
     },

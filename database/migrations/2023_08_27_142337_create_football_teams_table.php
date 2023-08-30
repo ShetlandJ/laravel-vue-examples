@@ -23,3 +23,4 @@ class CreateFootballTeamsTable extends Migration
         Schema::dropIfExists('football_teams');
     }
 }
+

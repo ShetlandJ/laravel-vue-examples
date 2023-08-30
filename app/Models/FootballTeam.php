@@ -12,6 +12,8 @@ class FootballTeam extends Model
         'name',
         'founded',
         'stadium',
-        'location'
+        'location',
+        'colour',
+        'secondary_colour'
     ];
 }

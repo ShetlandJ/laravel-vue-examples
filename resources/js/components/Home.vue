@@ -19,7 +19,18 @@
                         Delete
                     </b-button>
                 </template>
+
+
+                <template #cell(colour)="data">
+                    <span :style="{ color: data.item.colour }">{{ data.item.colour }}</span>
+                </template>
+
+
+                <template #cell(secondary_colour)="data">
+                    <span :style="{ color: data.item['secondary_colour'] }">{{ data.item['secondary_colour'] }}</span>
+                </template>
             </b-table>
+
 
             <b-button @click="refresh"> Reseed/Refresh teams </b-button>
             <b-modal ref="editTeamModal" title="Edit Team" hide-footer>
@@ -27,18 +38,27 @@
                     <b-form-group label="Name">
                         <b-form-input v-model="editingTeam.name"></b-form-input>
                     </b-form-group>
-                    <b-form-group label="Name">
+                    <b-form-group label="Founded">
                         <b-form-input v-model="editingTeam.founded"></b-form-input>
                     </b-form-group>
-                    <b-form-group label="Name">
+                    <b-form-group label="Stadium">
                         <b-form-input v-model="editingTeam.stadium"></b-form-input>
                     </b-form-group>
-                    <b-form-group label="Name">
+                    <b-form-group label="Location">
                         <b-form-input v-model="editingTeam.location"></b-form-input>
+                    </b-form-group>
+                    <b-form-group label="Colour">
+                        <!-- Using input type color for Colour -->
+                        <b-form-input type="color" v-model="editingTeam.colour"></b-form-input>
+                    </b-form-group>
+                    <b-form-group label="Secondary Colour">
+                        <!-- Using input type color for Secondary Colour -->
+                        <b-form-input type="color" v-model="editingTeam['secondary_colour']"></b-form-input>
                     </b-form-group>
                     <b-button @click="updateTeam" variant="success">Save</b-button>
                 </b-form>
             </b-modal>
+
 
         </b-container>
     </div>
@@ -72,6 +92,14 @@ export default {
                     label: "Location",
                 },
                 {
+                    key: "colour",
+                    label: "Colour",
+                },
+                {
+                    key: "secondary_colour",
+                    label: "Secondary Colour",
+                },
+                {
                     key: "actions",
                     label: "",
                 },
@@ -85,7 +113,9 @@ export default {
                 name: "",
                 founded: "",
                 stadium: "",
-                location: ""
+                location: "",
+                colour: "",
+                'secondary_colour': ""
             }
 
         };
