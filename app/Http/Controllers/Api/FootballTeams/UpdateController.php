@@ -13,7 +13,7 @@ class UpdateController extends Controller
     {
         $updatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'founded' => 'required|date',
+            'founded' => 'required|string|max:255',
             'stadium' => 'required|string|max:255',
             'location' => 'required|string|max:255',
 
