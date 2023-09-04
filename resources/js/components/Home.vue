@@ -2,7 +2,6 @@
     <div id="app">
         <b-container class="mt-4">
             <new-team-form class="mb-4 w-50" />
-
             <b-form-group label="Search">
                 <b-input-group>
                     <b-form-input v-model="searchQuery" placeholder="Enter search term"></b-form-input>
