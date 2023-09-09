@@ -15,11 +15,11 @@ class FootballPlayer extends Model
         'country',
     ];
 
-
     public function teams()
     {
-        return $this->belongsToMany(FootballTeam::class, 'football_players_to_teams')
+        return $this->belongsToMany(FootballTeam::class, 'football_players_to_teams', 'football_player_id', 'team_id')
             ->withPivot('start_date', 'end_date', 'transfer_type')
             ->withTimestamps();
     }
+    
 }
