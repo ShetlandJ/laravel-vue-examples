@@ -29,4 +29,6 @@ Route::namespace('App\Http\Controllers\Api\FootballTeams')->prefix('/teams')->gr
     Route::post('/', 'CreateController')->name('api.football-team.create');
     Route::delete('/{team:id}', 'DeleteController')->name('api.football-team.destroy');
     Route::put('/{team:id}', 'UpdateController')->name('api.football-team.update');
+    Route::post('/add-player', 'PlayerController')->name('api.football-team.add-player');
+
 });

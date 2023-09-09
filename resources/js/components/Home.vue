@@ -47,7 +47,6 @@
                         <b-form-input v-model="editingTeam.location"></b-form-input>
                     </b-form-group>
                     <b-form-group label="Colour">
-                        <!-- Using input type color for Colour -->
                         <b-form-input type="color" v-model="editingTeam.colour"></b-form-input>
                     </b-form-group>
                     <b-form-group label="Secondary Colour">
