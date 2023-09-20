@@ -50,7 +50,6 @@
                         <b-form-input type="color" v-model="editingTeam.colour"></b-form-input>
                     </b-form-group>
                     <b-form-group label="Secondary Colour">
-                        <!-- Using input type color for Secondary Colour -->
                         <b-form-input type="color" v-model="editingTeam['secondary_colour']"></b-form-input>
                     </b-form-group>
                     <b-button @click="updateTeam" variant="success">Save</b-button>

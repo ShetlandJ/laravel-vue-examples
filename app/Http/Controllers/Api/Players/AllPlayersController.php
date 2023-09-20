@@ -11,8 +11,9 @@ class AllPlayersController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $allTeams = FootballPlayer::all();
-
-        return response()->json($allTeams, Response::HTTP_OK);
+        $allPlayersWithTeams = FootballPlayer::with('teams')->get();
+    
+        return response()->json($allPlayersWithTeams, Response::HTTP_OK);
     }
+    
 }
