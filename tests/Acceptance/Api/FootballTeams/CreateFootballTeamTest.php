@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Acceptance\Api\OneToOne;
+namespace Tests\Acceptance\Api\FootballTeams;
 
 use Carbon\Carbon;
 use App\Models\Org\User;
