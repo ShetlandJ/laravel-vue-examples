@@ -30,4 +30,17 @@ class CreateFootballTeamTest extends AcceptanceTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
     }
+    public function testCreatingFootballTeamInvalidName()
+    {
+        $payload = [
+            "name" => null,
+            "founded" => 2000,
+            "stadium" => "asdf",
+            "location" => "asdf"
+        ];
+
+        $response = $this->json('POST', '/api/teams', $payload);
+
+        $this->assertEquals(422, $response->getStatusCode());
+    }
 }
