@@ -16,15 +16,11 @@ class IndexFootballTeamTest extends AcceptanceTestCase
     public function setUp(): void
     {
         parent::setUp();
+        // $team = FootballTeam::factory()->create();
     }
 
-    public function testCreatingFootballTeamSuccess()
+    public function testGetTeams()
     {
-        // $team = FootballTeam::factory()->create();
-
-        // $this->assertEquals(2, 1 + 1);
-
-
         $response = $this->json('GET', '/api/teams');
 
         $this->assertEquals(200, $response->getStatusCode());
@@ -34,5 +30,21 @@ class IndexFootballTeamTest extends AcceptanceTestCase
         $json = json_decode($content);
 
         $this->assertCount(6, $json);
+    }
+
+    public function testGetMoreTeams()
+    {
+
+        FootballTeam::factory()->count(2)->create();
+
+        $response = $this->json('GET', '/api/teams');
+
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $content = $response->getContent();
+
+        $json = json_decode($content);
+
+        $this->assertCount(8, $json);
     }
 }
