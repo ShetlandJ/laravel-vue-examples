@@ -22,6 +22,20 @@ class UpdateFootballTeamTest extends AcceptanceTestCase
     {
         $team = FootballTeam::factory()->create();
 
+        $newName = 'wrexham';
+
+        $payload = [
+            'name' => $newName,
+            'founded' => $team->founded,
+            'stadium' => $team->stadium,
+            'location' => $team->location,
+        ];
+
+        $response = $this->json('PUT', '/api/teams/' . $team->id, ["data" => $payload]);
+
+
+        $this->assertEquals(200, $response->getStatusCode());
+
         $this->assertEquals(2, 1 + 1);
     }
 }

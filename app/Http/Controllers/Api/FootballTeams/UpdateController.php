@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class UpdateController extends Controller 
+class UpdateController extends Controller
 {
     public function __invoke(Request $request, FootballTeam $team)
     {
@@ -16,8 +16,8 @@ class UpdateController extends Controller
             'founded' => 'required|string|max:255',
             'stadium' => 'required|string|max:255',
             'location' => 'required|string|max:255',
-            'colour' => 'required|string|max:7|regex:/^#[a-fA-F0-9]{6}$/', 
-            'secondary_colour' => 'required|string|max:7|regex:/^#[a-fA-F0-9]{6}$/',
+            'colour' => 'string|max:7|regex:/^#[a-fA-F0-9]{6}$/',
+            'secondary_colour' => 'string|max:7|regex:/^#[a-fA-F0-9]{6}$/',
 
         ]);
 
