@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\FootballTeams;
+namespace App\Http\Controllers\Api\Players;
 
 use App\Models\FootballPlayer;
 use App\Models\FootballTeam; 

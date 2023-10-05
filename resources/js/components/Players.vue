@@ -1,7 +1,6 @@
 <template>
     <div id="app">
         <b-container class="mt-4">
-            <AddPlayer class="mb-4 w-50" />
             <h2>Players</h2>
             <b-form-group label="Search">
                 <b-input-group>
@@ -101,14 +100,33 @@ export default {
             playerFields: ['name', 'position', 'dateOfBirth', 'country', 'teams', 'actions']
         };
     },
-    computed: {
-        filteredPlayers() {
-            if (this.searchQuery) {
-                return this.players.filter(player => player.name.includes(this.searchQuery));
-            }
-            return this.players;
-        }
+    created() {
+        this.loading = true;
+        axios.get('/api/players')
+            .then(response => {
+                this.players = response.data;
+                this.originalPlayers = [...response.data];
+            })
+            .catch(error => {
+                console.error("Error fetching players with teams", error);
+                console.log(this.players)
+            })
+            .finally(() => {
+                this.loading = false;
+            });
+
+        axios.get('/api/teams')
+            .then(response => {
+                this.teams = response.data;
+            })
+            .catch(error => {
+                console.error("Error fetching teams", error);
+            })
+            .finally(() => {
+                this.loading = false;
+            });
     },
+
     methods: {
         getTeamName(player) {
             if (!player.teams || !player.teams.length) return '';
@@ -180,31 +198,15 @@ export default {
         }
 
     },
-    created() {
-        this.loading = true;
-        axios.get('/api/players')
-            .then(response => {
-                this.players = response.data;
-                this.originalPlayers = [...response.data];
-            })
-            .catch(error => {
-                console.error("Error fetching players with teams", error);
-            })
-            .finally(() => {
-                this.loading = false;
-            });
+    computed: {
+        filteredPlayers() {
+            if (this.searchQuery) {
+                return this.players.filter(player => player.name.includes(this.searchQuery));
+            }
+            return this.players;
+        }
+    },
 
-        axios.get('/api/teams')
-            .then(response => {
-                this.teams = response.data;
-            })
-            .catch(error => {
-                console.error("Error fetching teams", error);
-            })
-            .finally(() => {
-                this.loading = false;
-            });
-    }
 };
 </script>
 
