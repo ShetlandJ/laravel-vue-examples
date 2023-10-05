@@ -17,7 +17,10 @@ class CreateController extends Controller
         $content = $request->all();
 
         $validator = Validator::make($content, [
-            "name" => "required|string"
+            "name" => "required|string",
+            "founded" => "required|integer",
+            "stadium" => "required|string",
+            "location" => "required|string",
         ]);
 
         if ($validator->fails()) {

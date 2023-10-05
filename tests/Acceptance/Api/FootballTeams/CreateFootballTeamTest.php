@@ -30,6 +30,7 @@ class CreateFootballTeamTest extends AcceptanceTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
     }
+
     public function testCreatingFootballTeamInvalidName()
     {
         $payload = [
@@ -37,6 +38,48 @@ class CreateFootballTeamTest extends AcceptanceTestCase
             "founded" => 2000,
             "stadium" => "asdf",
             "location" => "asdf"
+        ];
+
+        $response = $this->json('POST', '/api/teams', $payload);
+
+        $this->assertEquals(422, $response->getStatusCode());
+    }
+
+    public function testCreatingFootballTeamInvalidFounded()
+    {
+        $payload = [
+            "name" => "chelsea",
+            "founded" => "asdf",
+            "stadium" => "asdf",
+            "location" => "asdf"
+        ];
+
+        $response = $this->json('POST', '/api/teams', $payload);
+
+        $this->assertEquals(422, $response->getStatusCode());
+    }
+
+    public function testCreatingFootballTeamInvalidStadium()
+    {
+        $payload = [
+            "name" => "chelsea",
+            "founded" => "asdf",
+            "stadium" => 2000,
+            "location" => "asdf"
+        ];
+
+        $response = $this->json('POST', '/api/teams', $payload);
+
+        $this->assertEquals(422, $response->getStatusCode());
+    }
+
+    public function testCreatingFootballTeamInvalidLocation()
+    {
+        $payload = [
+            "name" => "chelsea",
+            "founded" => "asdf",
+            "stadium" => "asdf",
+            "location" => 2000
         ];
 
         $response = $this->json('POST', '/api/teams', $payload);
