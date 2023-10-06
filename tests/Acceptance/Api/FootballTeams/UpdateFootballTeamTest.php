@@ -31,11 +31,24 @@ class UpdateFootballTeamTest extends AcceptanceTestCase
             'location' => $team->location,
         ];
 
-        $response = $this->json('PUT', '/api/teams/' . $team->id, ["data" => $payload]);
+        // dd($payload["name"]);
 
+        $response = $this->json('PUT', '/api/teams/' . $team->id,  $payload);
+
+        $content = $response->getContent();
+
+        $json = json_decode($content);
+
+        $id = $json->team->id;
+
+        $updatedName = $json->team->name;
 
         $this->assertEquals(200, $response->getStatusCode());
 
         $this->assertEquals(2, 1 + 1);
+
+        $this->assertEquals($id, $team->id);
+
+        $this->assertEquals($newName, $updatedName);
     }
 }

@@ -9,8 +9,10 @@ use Illuminate\Support\Facades\Request;
 
 class DeleteController extends Controller
 {
-    public function __invoke(Request $request, FootballTeam $team)
+    public function __invoke(Request $request, int $id)
     {
+
+        $team = FootballTeam::findOrFail($id);
         $team->delete();
 
         return response()->json([

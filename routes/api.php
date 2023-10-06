@@ -27,6 +27,6 @@ Route::namespace('App\Http\Controllers\Api\FootballTeams')->prefix('/teams')->gr
     Route::get('/refresh', 'RefreshController')->name('api.football-team.refresh');
     Route::get('/', 'IndexController')->name('api.football-team.index');
     Route::post('/', 'CreateController')->name('api.football-team.create');
-    Route::delete('/{team:id}', 'DeleteController')->name('api.football-team.destroy');
-    Route::put('/{team:id}', 'UpdateController')->name('api.football-team.update');
+    Route::delete('/{id}', 'DeleteController')->name('api.football-team.destroy');
+    Route::put('/{id}', 'UpdateController')->name('api.football-team.update');
 });
