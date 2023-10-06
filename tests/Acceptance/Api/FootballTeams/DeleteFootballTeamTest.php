@@ -59,8 +59,6 @@ class DeleteFootballTeamTest extends AcceptanceTestCase
 
         $newTeams = json_decode($getAllTeams->getContent());
 
-        $newTeams = json_decode($getAllTeams->getContent());
-
         $teamIsStillPresent = false;
         foreach ($newTeams as $existingTeam) {
             if ($existingTeam->name == "teamToDelete") {
