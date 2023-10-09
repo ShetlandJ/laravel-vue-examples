@@ -9,11 +9,14 @@ use Illuminate\Http\Response;
 
 class UpdateController extends Controller
 {
-    public function __invoke(Request $request, FootballTeam $team)
+    public function __invoke(Request $request, int $id)
     {
+
+        $team = FootballTeam::findOrFail($id);
+
         $updatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'founded' => 'required|string|max:255',
+            'founded' => 'required|integer',
             'stadium' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'colour' => 'string|max:7|regex:/^#[a-fA-F0-9]{6}$/',
