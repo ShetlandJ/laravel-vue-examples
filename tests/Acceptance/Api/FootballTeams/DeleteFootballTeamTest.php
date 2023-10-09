@@ -69,21 +69,4 @@ class DeleteFootballTeamTest extends AcceptanceTestCase
 
         $this->assertFalse($teamIsStillPresent, "Team 'teamToDelete' was still found in the list after it should have been deleted.");
     }
-
-
-    // public function testGetMoreTeams()
-    // 
-
-    //     FootballTeam::factory()->count(2)->create();
-
-    //     $response = $this->json('GET', '/api/teams');
-
-    //     $this->assertEquals(200, $response->getStatusCode());
-
-    //     $content = $response->getContent();
-
-    //     $json = json_decode($content);
-
-    //     $this->assertCount(8, $json);
-    // }
 }
