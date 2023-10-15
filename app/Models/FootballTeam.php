@@ -19,4 +19,12 @@ class FootballTeam extends Model
         'colour',
         'secondary_colour'
     ];
+
+    public function players()
+    {
+        return $this->belongsToMany(FootballPlayer::class, 'football_players_to_teams')
+            ->withPivot('start_date', 'end_date', 'transfer_type')
+            ->withTimestamps();
+    }
 }
+

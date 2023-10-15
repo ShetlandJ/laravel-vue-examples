@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // });
 
 
+
 Route::namespace('App\Http\Controllers\Api\FootballTeams')->prefix('/teams')->group(function () {
     Route::get('/refresh', 'RefreshController')->name('api.football-team.refresh');
     Route::get('/', 'IndexController')->name('api.football-team.index');
@@ -30,3 +31,9 @@ Route::namespace('App\Http\Controllers\Api\FootballTeams')->prefix('/teams')->gr
     Route::delete('/{id}', 'DeleteController')->name('api.football-team.destroy');
     Route::put('/{id}', 'UpdateController')->name('api.football-team.update');
 });
+
+Route::namespace('App\Http\Controllers\Api\Players')->prefix('/players')->group(function () {
+    Route::post('/add-player', 'PlayerController')->name('api.football-team.add-player');
+    Route::get('/players', 'AllPlayersController')->name('api.football-team.players');
+});
+
